@@ -7,22 +7,15 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to VM via SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.VM_SSH_KEY }}
-          port: 22
-          script: |
-            cd ~/uptime-kuma || (mkdir ~/uptime-kuma && cd ~/uptime-kuma)
-            rm -f docker-compose.yml
-            curl -O https://raw.githubusercontent.com/${{ github.repository }}/main/docker-compose.yml
-            docker compose pull
-            docker compose up -d
+      - name: Déployer Uptime Kuma (docker compose)
+        run: |
+          cd ~/uptime-kuma-cicd
+          docker compose pull
+          docker compose up -d
+
