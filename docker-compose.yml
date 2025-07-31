@@ -6,4 +6,4 @@ services:
     volumes:
       - ./data:/app/data
     ports:
-      - "3001:3001"
+      - "3010:3001"
