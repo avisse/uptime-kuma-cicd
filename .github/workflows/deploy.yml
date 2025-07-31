@@ -15,7 +15,6 @@ jobs:
 
       - name: Déployer Uptime Kuma (docker compose)
         run: |
-          cd ~/projet-ecf/uptime-kuma-cicd
           docker compose pull
           docker compose up -d
 
