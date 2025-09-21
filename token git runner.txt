@@ -1,0 +1,1 @@
+./config.sh --url https://github.com/avisse/uptime-kuma-cicd --token BTNRIFLZ46BMNUAVYIJWEHLIRNXT6
